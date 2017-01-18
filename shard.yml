@@ -1,0 +1,9 @@
+name: truefx
+version: 0.1.0
+
+authors:
+  - Surakarn Samkaew <tonkla@gmail.com>
+
+crystal: 0.20.4
+
+license: MIT
