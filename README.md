@@ -15,8 +15,7 @@ dependencies:
 ## Usage
 
 TrueFX provides a price feed of these ten paris by default,  
-EUR/USD, USD/JPY, GBP/USD, EUR/GBP, USD/CHF,  
-EUR/JPY, EUR/CHF, USD/CAD, AUD/USD, GBP/JPY
+EUR/USD, USD/JPY, GBP/USD, EUR/GBP, USD/CHF, EUR/JPY, EUR/CHF, USD/CAD, AUD/USD, GBP/JPY
 
 ```crystal
 require "truefx"
@@ -30,10 +29,10 @@ Get tick of the specific pair
 feed.get("EUR/USD")
 ```
 
-Results in JSON
+Results in JSON string
 
-```json
-[{\"symbol\":\"EUR/USD\",\"timestamp\":1485407262530,\"bid\":1.07581,\"offer\":1.07588,\"high\":1.0745,\"low\":1.07661,\"open\":1.0754}]
+```
+"[{\"symbol\":\"EUR/USD\",\"timestamp\":1485416232386,\"bid\":1.0737,\"offer\":1.07374,\"high\":1.07363,\"low\":1.07661,\"open\":1.0754,\"spread\":0.4}]"
 ```
 
 Get tick of more specific pairs, separate by comma
@@ -50,9 +49,8 @@ feed.get
 
 Authorized session can access to more minor pairs. [Register](https://www.truefx.com)
 
-AUD/CAD, AUD/CHF, AUD/JPY, AUD/NZD, CAD/CHF, CAD/JPY, CHF/JPY,  
-EUR/AUD, EUR/CAD, EUR/NOK, EUR/NZD, GBP/CAD, GBP/CHF, NZD/JPY,  
-NZD/USD, USD/NOK, USD/SEK
+AUD/CAD, AUD/CHF, AUD/JPY, AUD/NZD, CAD/CHF, CAD/JPY, CHF/JPY, EUR/AUD, EUR/CAD,  
+EUR/NOK, EUR/NZD, GBP/CAD, GBP/CHF, NZD/JPY, NZD/USD, USD/NOK, USD/SEK
 
 ```crystal
 feed = TrueFX::Feed.new(username: "USERNAME", password: "PASSWORD")

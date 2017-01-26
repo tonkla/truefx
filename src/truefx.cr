@@ -13,6 +13,7 @@ module TrueFX
     property high : Float64
     property low : Float64
     property open : Float64
+    property spread : Float64
 
     def initialize
       @symbol = ""
@@ -22,6 +23,7 @@ module TrueFX
       @high = 0.0
       @low = 0.0
       @open = 0.0
+      @spread = 0.0
     end
 
     def to_json(json : JSON::Builder)
@@ -33,6 +35,7 @@ module TrueFX
         json.field "high", self.high
         json.field "low", self.low
         json.field "open", self.open
+        json.field "spread", self.spread
       end
     end
   end
@@ -81,9 +84,18 @@ module TrueFX
         tick.high = csv[6].to_f64
         tick.low = csv[7].to_f64
         tick.open = csv[8].to_f64
+        tick.spread = calc_spread tick
         ticks.push tick
       end
       ticks.to_json
+    end
+
+    private def calc_spread(tick)
+      if tick.symbol.includes? "JPY"
+        (tick.offer - tick.bid).round(5) * 100
+      else
+        (tick.offer - tick.bid).round(5) * 10000
+      end
     end
   end
 end
