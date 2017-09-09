@@ -44,10 +44,7 @@ module TrueFX
     property username = ""
     property password = ""
     property session  = ""
-
-    # They provide HTTPS on `*.truefx.com`, when use it, we will get this
-    # error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
-    property base_uri = "http://webrates.truefx.com/rates/connect.html?f=csv"
+    property base_uri = "https://webrates.truefx.com/rates/connect.html?f=csv"
 
     def initialize
     end
